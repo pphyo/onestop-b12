@@ -6,7 +6,8 @@ public class District {
 	private String name;
 	private String burmese;
 	private boolean deleted;
-
+	private State state;
+	
 	public int getId() {
 		return id;
 	}
@@ -37,6 +38,14 @@ public class District {
 
 	public void setDeleted(boolean deleted) {
 		this.deleted = deleted;
+	}
+
+	public State getState() {
+		return state;
+	}
+
+	public void setState(State state) {
+		this.state = state;
 	}
 
 }

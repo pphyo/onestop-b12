@@ -32,4 +32,6 @@ public interface BaseService<T> {
 	
 	T selectById(int id);
 	
+	long count();
+	
 }
