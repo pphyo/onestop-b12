@@ -57,5 +57,6 @@
 	<modules>
 		<module>01-hello-jdbc</module>
 		<module>02-prepared-statement</module>
+		<module>03-more-ps</module>
 	</modules>
 </project>
