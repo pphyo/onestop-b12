@@ -2,18 +2,26 @@ package com.jdc.ps.service;
 
 import static com.jdc.ps.util.ConnectionManager.getConnection;
 import static com.jdc.ps.util.SQLQueries.*;
+import static com.jdc.ps.util.StringUtils.*;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.jdc.ps.entity.District;
 import com.jdc.ps.entity.Region;
 import com.jdc.ps.entity.State;
 
 public class DistrictService implements BaseService<District> {
+	
+	private static final Logger logger = Logger.getLogger(DistrictService.class.getName());
 
 	@Override
 	public int insert(District entity) {
@@ -40,11 +48,46 @@ public class DistrictService implements BaseService<District> {
 
 	@Override
 	public int insert(List<District> entities) {
+		Objects.requireNonNull(entities);
+
+		try(var conn = getConnection();
+				var stmt = conn.prepareStatement(DISTRICT_INSERT)) {
+			
+			for(District entity : entities) {
+				stmt.setString(1, entity.getName());
+				stmt.setString(2, entity.getBurmese());
+				stmt.setInt(3, entity.getState().getId());
+				
+				stmt.addBatch();
+			}
+			
+//			logger.info(Arrays.toString(stmt.executeBatch()));
+			var result = stmt.executeBatch();
+			logger.log(Level.INFO, Arrays.toString(result));
+			return result.length;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return 0;
 	}
 
 	@Override
 	public void update(int id, District entity) {
+		try(var conn = getConnection();
+				var stmt = conn.prepareStatement(DISTRICT_UPDATE)) {
+			
+			stmt.setString(1, entity.getName());
+			stmt.setString(2, entity.getBurmese());
+			stmt.setInt(3, entity.getState().getId());
+			stmt.setInt(4, id);
+			
+			stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -91,6 +134,50 @@ public class DistrictService implements BaseService<District> {
 	@Override
 	public long count() {
 		return selectAll().size();
+	}
+	
+	public List<District> select(String districtName, String stateName, Region region, int population) {
+		
+		var result = new ArrayList<District>();
+		var params = new LinkedList<Object>();
+		StringBuilder sb = new StringBuilder(DISTRICT_SELECT_ALL.concat(" where 1 = 1"));
+		
+		if(!isEmpty(districtName)) {
+			params.add(districtName.toUpperCase().concat("%"));
+			sb.append(" and upper(d.name) like ?");
+		}
+		
+		if(!isEmpty(stateName)) {
+			params.add(stateName.toUpperCase().concat("%"));
+			sb.append(" and upper(s.name) like ?");
+		}
+		
+		if(null != region) {
+			params.add(region);
+			sb.append(" and s.region = ?");
+		}
+		
+		if(population > 0) {
+			params.add(population);
+			sb.append(" and s.population >= ?");
+		}
+		
+		try(var conn = getConnection();
+				var stmt = conn.prepareStatement(sb.toString())) {
+			
+			for(int i = 0; i < params.size(); i ++) {
+				stmt.setObject(i + 1, params.get(i));
+			}
+			
+			var rs = stmt.executeQuery();
+			while(rs.next())
+				result.add(getDistrictEntity(rs));
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 	
 	private District getDistrictEntity(ResultSet rs) throws SQLException {
