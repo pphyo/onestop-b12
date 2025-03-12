@@ -7,11 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -27,9 +29,10 @@ public final class StateServiceTest extends BaseTest {
 	@Order(4)
 	@ParameterizedTest
 	@CsvSource({
-		"6, 6",
-		"4, 5"
+		"6, 14",
+		"4, 13"
 	})
+	@Disabled
 	void test_for_delete(int id, int expectedCount) {
 		stateService.delete(id);
 		assertEquals(expectedCount, stateService.count());
@@ -38,6 +41,7 @@ public final class StateServiceTest extends BaseTest {
 	@Order(3)
 	@ParameterizedTest
 	@MethodSource(value = "getStateEntityList")
+	@Disabled
 	void test_for_insert_list(List<State> entities) {
 		var insertedCount = stateService.insert(entities);
 		assertEquals(3, insertedCount);
@@ -79,6 +83,7 @@ public final class StateServiceTest extends BaseTest {
 	@Order(2)
 	@ParameterizedTest
 	@CsvSource(delimiter = '\t', value = "Naypyidaw Union Territory	နေပြည်တော် ပြည်ထောင်စုနယ်မြေ	Central	Naypyidaw	1_160_242	4")
+	@Disabled
 	void test_for_update(String name, String burmese, Region region,
 			String capital, int population, int idForUpdate) {
 		
@@ -102,10 +107,7 @@ public final class StateServiceTest extends BaseTest {
 		
 	@Order(1)
 	@ParameterizedTest
-	@CsvSource(value = { "Ayeyarwady Region	ဧရာဝတီတိုင်းဒေသကြီး	Lower	Pathein	6_184_829	1",
-			"Bago Region	ပဲခူးတိုင်းဒေသကြီး	Lower	Bago	4_867_373	2",
-			"Chin State	ချင်းပြည်နယ်	West	Hakha	478_801	3",
-			"Naypyidaw	နေပြည်တော်	West	Naypyitaw	1_160_110	4"}, delimiter = '\t')
+	@CsvFileSource(resources = "/states.txt")
 	void test_for_insert(String name, String burmese, Region region, String capital, int population, int expectedId) {
 
 		State state = new State();

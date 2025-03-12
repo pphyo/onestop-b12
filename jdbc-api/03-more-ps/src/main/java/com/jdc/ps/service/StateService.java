@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.jdc.ps.entity.Region;
 import com.jdc.ps.entity.State;
+import com.jdc.ps.entity.TotalPopulationByRegion;
 
 import static com.jdc.ps.util.SQLQueries.*;
 import static com.jdc.ps.util.ConnectionManager.getConnection;
@@ -159,6 +160,31 @@ public class StateService implements BaseService<State> {
 		}
 		
 		return 0;
+	}
+	
+	public List<TotalPopulationByRegion> searchTotalPopulationByRegion(int totalPopulation) {
+		var result = new ArrayList<TotalPopulationByRegion>();
+		
+		try(var conn = getConnection();
+				var stmt = conn.prepareStatement(STATE_TOTAL_POPULATION_BY_REGION)) {
+			
+			stmt.setInt(1, totalPopulation);
+			
+			var rs = stmt.executeQuery();
+			while(rs.next())
+				result.add(
+						new TotalPopulationByRegion(
+								Region.valueOf(rs.getString("region")), 
+								rs.getInt("state_count"), 
+								rs.getInt("total_population")
+						)
+				);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 
 	private State getStateEntity(ResultSet rs) throws SQLException {

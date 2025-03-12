@@ -153,7 +153,7 @@ public class DistrictService implements BaseService<District> {
 		}
 		
 		if(null != region) {
-			params.add(region);
+			params.add(region.name());
 			sb.append(" and s.region = ?");
 		}
 		

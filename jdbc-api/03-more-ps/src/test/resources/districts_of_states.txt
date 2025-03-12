@@ -1,0 +1,80 @@
+Pathein, ပုသိမ်, 1, 1
+Kyonpyaw, ကျုံပြော်, 1, 2
+Hinthada, ဟင်္သာတ, 1, 3
+Labutta, လပွတ္တာ, 1, 4
+Maubin, မအူပင်, 1, 5
+Myanaung, မြန်အောင်, 1, 6
+Myaungmya, မြောင်းမြ, 1, 7
+Tedim, တီးတိန်, 3, 8
+Falam, ဖလမ်း, 3, 9
+Hakha, ဟားခါး, 3, 10
+Matupi, မတူပီ, 3, 11
+Mindat, မင်းတပ်, 3, 12
+Bhamo, ဗန်းမော်, 4, 13
+Mohnyin, မိုးညှင်း, 4, 14
+Myitkyina, မြစ်ကြီးနား, 4, 15
+Putao, ပူတာအို, 4, 16
+Bawlakhe, ဘော်လခဲ, 5, 17
+Demoso, ဒီးမော့ဆို, 5, 18
+Loikaw, လွိုင်ကော်, 5, 19
+Mese, မယ်စဲ့, 5, 20
+Hpa-an, ဘားအံ, 6, 21
+Hpapun, ဖာပွန်, 6, 22
+Kawkareik, ကော့ကရိတ်, 6, 23
+Myawaddy, မြဝတီ, 6, 24
+Magway, မကွေး, 7, 25
+Gangaw, ဂန့်ဂေါ်, 7, 26
+Minbu, မင်းဘူး, 7, 27
+Pakokku, ပခုက္ကူ, 7, 28
+Thayet, သရက်, 7, 29
+Mandalay, မန္တလေး, 8, 30
+Kyaukse, ကျောက်ဆည်, 8, 31
+Meiktila, မိတ္ထီလာ, 8, 32
+Myingyan, မြင်းခြံ, 8, 33
+Nyaung-U, ညောင်ဦး, 8, 34
+Pyinoolwin, ပြင်ဦးလွင်, 8, 35
+Yamethin, ရမည်းသင်း, 8, 36
+Mawlamyine, မော်လမြိုင်, 9, 37
+Thaton, သထုံ, 9, 38
+Ottara, ဥတ္တရ, 10, 39
+Dekkhina, ဒက္ခိဏ, 10, 40
+Sittwe, စစ်တွေ, 11, 41
+Kyaukpyu, ကျောက်ဖြူ, 11, 42
+Maungdaw, မောင်တော, 11, 43
+Thandwe, သံတွဲ, 11, 44
+Mrauk-U, မြောက်ဦး, 11, 45
+Sagaing, စစ်ကိုင်း, 12, 46
+Hkamti, ခန္တီး, 12, 47
+Kanbalu, ကန့်ဘလူ, 12, 48
+Kale, ကလေး, 12, 49
+Katha, ကသာ, 12, 50
+Mawlaik, မော်လိုက်, 12, 51
+Monywa, မုံရွာ, 12, 52
+Shwebo, ရွှေဘို, 12, 53
+Tamu, တမူး, 12, 54
+Yinmabin, ယင်းမပင်, 12, 55
+Kawlin, ကော်လင်း, 12, 56
+Kengtung, ကျိုင်းတုံ, 13, 57
+Mong Hpayak, မိုင်းဖျောက်, 13, 58
+Mong Hsat, မိုင်းဆတ်, 13, 59
+Tachileik, တာချီလိတ်, 13, 60
+Kunlong, ကွမ်းလုံ, 13, 61
+Kyaukme, ကျောက်မဲ, 13, 62
+Lashio, လားရှိုး, 13, 63
+Mu Se, မူဆယ်, 13, 64
+Mongmit, မိုးမိတ်, 13, 65
+Kokang, ကိုးကန့်, 13, 66
+Pa Laung, ပလောင်, 13, 67
+Wa, ဝ, 13, 68
+Langkho, လင်းခေး, 13, 69
+Loilen, လွိုင်လင်, 13, 70
+Taunggyi, တောင်ကြီး, 13, 71
+Danu, ဓနု, 13, 72
+Pa-O, ပအို့ဝ်, 13, 73
+Dawei, ထားဝယ်, 14, 74
+Kawthaung, ကော့သောင်း, 14, 75
+Myeik, မြိတ်, 14, 76
+East Yangon, အရှေ့ပိုင်း, 15, 77
+North Yangon, မြောက်ပိုင်း, 15, 78
+South Yangon, တောင်ပိုင်း, 15, 79
+West Yangon, အနောက်ပိုင်း, 15, 80

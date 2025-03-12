@@ -1,0 +1,15 @@
+Ayeyarwady, ဧရာဝတီတိုင်းဒေသကြီး, Lower, Pathein, 6_184_829, 1
+Bago, ပဲခူးတိုင်းဒေသကြီး, Lower, Bago, 4_867_373, 2
+Chin, ချင်းပြည်နယ်, West, Hakha, 478_801, 3
+Kachin, ကချင်ပြည်နယ်, North, Myitkyina, 1_689_441, 4
+Kayah, ကယားပြည်နယ်, East, Loikaw, 286_627, 5
+Kayin, ကရင်ပြည်နယ်, South, Hpa-an, 1_574_079, 6
+Magway, မကွေးတိုင်းဒေသကြီး, Central, Magwe, 3_917_055, 7
+Mandalay, မန္တလေးတိုင်းဒေသကြီး, Central, Mandalay, 6_165_723, 8
+Mon, မွန်ပြည်နယ်, South, Mawlamyine, 2_054_393, 9
+Naypyidaw Union Territory	နေပြည်တော်, ပြည်ထောင်စုနယ်မြေ, Central, Naypyidaw, 1_160_242, 10
+Rakhine, ရခိုင်ပြည်နယ်, West, Sittwe, 3_188_807, 11
+Sagaing, စစ်ကိုင်းတိုင်းဒေသကြီး, North, Monywa, 5_325_347, 12
+Shan, ရှမ်းပြည်နယ်, East, Taunggyi, 5_824_432, 13
+Tanintharyi, တနင်္သာရီတိုင်းဒေသကြီး, South, Dawei, 1_408_401, 14
+Yangon, ရန်ကုန်တိုင်းဒေသကြီး, Lower, Yangon, 7_360_703, 15

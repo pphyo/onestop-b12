@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -32,7 +33,13 @@ public class DistrictSerivceTest {
 	@Order(4)
 	@ParameterizedTest
 	@CsvSource({
-		",a,,,8"
+		",a,,0,7",
+		",ka,,0,12",
+		",,Lower,0,15",
+		",,,1000000,75",
+		",,Central,1000000,14",
+		"m,m,,0,6",
+		"m,m,Central,0,5"
 	})
 	void test_for_select(String districtName, String stateName, Region region, int population, int expectedRecordCount) {
 		var resultList = districtService.select(districtName, stateName, region, population);
@@ -101,89 +108,7 @@ public class DistrictSerivceTest {
 	
 	@Order(1)
 	@ParameterizedTest
-	@CsvSource({
-		"Pathein, ပုသိမ်, 1, 1",
-		"Kyonpyaw, ကျုံပြော်, 1, 2",
-		"Hinthada, ဟင်္သာတ, 1, 3",
-		"Labutta, လပွတ္တာ, 1, 4",
-		"Maubin, မအူပင်, 1, 5",
-		"Myanaung, မြန်အောင်, 1, 6",
-		"Myaungmya, မြောင်းမြ, 1, 7",
-		"Pyapon, ဖျာပုံ, 1, 8",
-		"Tedim, တီးတိန်",
-		"Falam, ဖလမ်း",
-		"Hakha, ဟားခါး",
-		"Matupi, မတူပီ",
-		"Mindat, မင်းတပ်",
-		"Bhamo, ဗန်းမော်",
-		"Mohnyin, မိုးညှင်း",
-		"Myitkyina, မြစ်ကြီးနား",
-		"Putao, ပူတာအို",
-		"Bawlakhe, ဘော်လခဲ",
-		"Demoso, ဒီးမော့ဆို",
-		"Loikaw, လွိုင်ကော်",
-		"Mese, မယ်စဲ့",
-		"Hpa-an, ဘားအံ",
-		"Hpapun, ဖာပွန်",
-		"Kawkareik, ကော့ကရိတ်",
-		"Myawaddy, မြဝတီ",
-		"Magway, မကွေး",
-		"Gangaw, ဂန့်ဂေါ်",
-		"Minbu, မင်းဘူး",
-		"Pakokku, ပခုက္ကူ",
-		"Thayet, သရက်",
-		"Mandalay, မန္တလေး",
-		"Kyaukse, ကျောက်ဆည်",
-		"Meiktila, မိတ္ထီလာ",
-		"Myingyan, မြင်းခြံ",
-		"Nyaung-U, ညောင်ဦး",
-		"Pyinoolwin, ပြင်ဦးလွင်",
-		"Yamethin, ရမည်းသင်း",
-		"Mawlamyine, မော်လမြိုင်",
-		"Thaton, သထုံ",
-		"Ottara, ဥတ္တရ",
-		"Dekkhina, ဒက္ခိဏ",
-		"Sittwe, စစ်တွေ",
-		"Kyaukpyu, ကျောက်ဖြူ",
-		"Maungdaw, မောင်တော",
-		"Thandwe, သံတွဲ",
-		"Mrauk-U, မြောက်ဦး",
-		"Sagaing, စစ်ကိုင်း",
-		"Hkamti, ခန္တီး",
-		"Kanbalu, ကန့်ဘလူ",
-		"Kale, ကလေး",
-		"Katha, ကသာ",
-		"Mawlaik, မော်လိုက်",
-		"Monywa, မုံရွာ",
-		"Shwebo, ရွှေဘို",
-		"Tamu, တမူး",
-		"Yinmabin, ယင်းမပင်",
-		"Kawlin, ကော်လင်း",
-		"Kengtung, ကျိုင်းတုံ",
-		"Mong Hpayak, မိုင်းဖျောက်",
-		"Mong Hsat, မိုင်းဆတ်",
-		"Tachileik, တာချီလိတ်",
-		"Kunlong, ကွမ်းလုံ",
-		"Kyaukme, ကျောက်မဲ",
-		"Lashio, လားရှိုး",
-		"Mu Se, မူဆယ်",
-		"Mongmit, မိုးမိတ်",
-		"Kokang, ကိုးကန့်",
-		"Pa Laung, ပလောင်",
-		"Wa, ဝ",
-		"Langkho, လင်းခေး",
-		"Loilen, လွိုင်လင်",
-		"Taunggyi, တောင်ကြီး",
-		"Danu, ဓနု",
-		"Pa-O, ပအို့ဝ်",
-		"Dawei, ထားဝယ်",
-		"Kawthaung, ကော့သောင်း",
-		"Myeik, မြိတ်",
-		"East Yangon, အရှေ့ပိုင်း",
-		"North Yangon, မြောက်ပိုင်း",
-		"South Yangon, တောင်ပိုင်း",
-		"West Yangon, အနောက်ပိုင်း"
-	})
+	@CsvFileSource(resources = "/districts_of_states.txt")
 	void test_for_insert(String name, String burmese, int stateId, int expectedId) {
 		var district = new District();
 		district.setName(name);
