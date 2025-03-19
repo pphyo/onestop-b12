@@ -21,12 +21,14 @@ public class IdMappingTest {
 				var em = emf.createEntityManager()) {
 			
 			var post1 = new Post();
-			post1.setIssuedDate(ZonedDateTime.now());
+			post1.getId().setId(0L);
+			post1.getId().setIssuedAt(ZonedDateTime.now());
 			post1.setStatus("Myanmar Java Developer");
 			post1.setPrivacy(PrivacySetting.Everyone);
 			
 			var post2 = new Post();
-			post2.setIssuedDate(ZonedDateTime.now());
+			post2.getId().setId(0L);
+			post2.getId().setIssuedAt(ZonedDateTime.now());
 			post2.setStatus("Myanmar Spring Developer");
 			post2.setPrivacy(PrivacySetting.Friends);
 			
@@ -45,7 +47,7 @@ public class IdMappingTest {
 			em.persist(post1);
 			
 			em.persist(user1);
-			
+
 			em.persist(post2);
 			
 			em.persist(user2);

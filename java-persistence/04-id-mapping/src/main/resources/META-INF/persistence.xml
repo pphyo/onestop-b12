@@ -9,10 +9,11 @@
 			<property name="jakarta.persistence.jdbc.password" value="onestop"/>
 			<property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
 			<!-- <property name="hibernate.type.wrapper_array_handling" value="allow"/> -->
-			<property name="hibernate.show_sql" value="true"/>
+			<!-- <property name="hibernate.show_sql" value="true"/> -->
 			<property name="hibernate.format_sql" value="true"/>
-		
+					
 		</properties>
+
 	</persistence-unit>
 	
 	<persistence-unit name="im-postgresql" transaction-type="RESOURCE_LOCAL">

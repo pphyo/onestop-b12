@@ -1,34 +1,36 @@
 package com.jdc.im.entity;
 
 import java.io.Serializable;
-import java.time.ZonedDateTime;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "posts")
-@SequenceGenerator(name = "posts_SEQ")
 public class Post implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "posts_SEQ")
-	private int id;
-
-	private ZonedDateTime issuedDate;
+//	@Id
+//	@SequenceGenerator(name = "posts_SEQ", initialValue = 1, allocationSize = 1)
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "posts_SEQ")
+//	private Long id;
+//
+//	@Id
+//	private ZonedDateTime issuedDate;
+	
+	@EmbeddedId
+	private PostPK id = new PostPK();
 
 	@Column(columnDefinition = "TEXT")
 	private String status;
 
+	@Transient
 	private String image;
 
 	@Column(nullable = false)
