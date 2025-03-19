@@ -93,5 +93,6 @@
 		<module>02-elementary-mapping</module>
 		<module>03-collection-mapping</module>
 		<module>04-id-mapping</module>
+		<module>05-relationship-mapping</module>
 	</modules>
 </project>
