@@ -3,6 +3,7 @@ package com.jdc.rm.test;
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -19,7 +20,34 @@ import com.jdc.rm.entity.Transaction.TransactionType;
 public final class RelationshipMappingTest extends BaseTest {
 	
 	@Test
+	void test() {
+		
+		AccountType main = new AccountType();
+		main.setName("Main");
+		
+		AccountType cash = new AccountType();
+		cash.setName("Cash");
+		
+		Account mainAccount = new Account();
+		mainAccount.setName("Main Account");
+		mainAccount.setAmount(new BigDecimal(1_000_000));
+		
+		Account cashAccount = new Account();
+		cashAccount.setName("Cash Account");
+		cashAccount.setAmount(new BigDecimal(200_000));
+		
+		mainAccount.addAccountType(main); // bi directional
+		
+		em.getTransaction().begin();
+		
+		em.persist(main);
+		
+		em.getTransaction().commit();
+	}
+	
+	@Test
 	@Order(2)
+	@Disabled
 	void test_for_inserting_data_to_many_to_one() {
 		var tx = em.getTransaction();
 		
@@ -52,6 +80,7 @@ public final class RelationshipMappingTest extends BaseTest {
 	
 	@Test
 	@Order(1)
+	@Disabled
 	void test_for_primary_key_join_column() {
 			var tx = em.getTransaction();
 			

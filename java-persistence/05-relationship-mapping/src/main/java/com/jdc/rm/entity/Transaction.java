@@ -54,8 +54,8 @@ public class Transaction {
 	)
 	private List<Category> categories;
 
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "account_id", referencedColumnName = "account_type_id")
+	@ManyToOne
+//	@JoinColumn(name = "account_id", referencedColumnName = "account_type_id")
 	private Account account;
 
 	public enum TransactionType {
