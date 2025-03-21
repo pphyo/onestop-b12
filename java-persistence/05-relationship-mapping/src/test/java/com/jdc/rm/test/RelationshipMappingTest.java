@@ -27,11 +27,8 @@ public final class RelationshipMappingTest extends BaseTest {
 		
 		em.getTransaction().begin();
 		
-		var accountType = em.find(AccountType.class, 1L);
-
-		var account = accountType.getAccount();
-		
-		account.getBudgets().remove(0);
+		var account = em.find(Account.class, 1L);
+		em.remove(account);
 		
 		em.getTransaction().commit();
 		

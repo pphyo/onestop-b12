@@ -16,33 +16,19 @@ import lombok.Data;
 public class Enrollment implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@EmbeddedId
 	private EnrollmentPK id;
-	
+
 	@Column(name = "enrollment_fee", nullable = false)
 	private double enrollmentFee;
-	
+
 	@ManyToOne
 	@MapsId("courseId")
 	private Course course;
-	
+
 	@ManyToOne
 	@MapsId("studentId")
 	private Student student;
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

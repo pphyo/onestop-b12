@@ -15,21 +15,11 @@ public class EnrollmentPK implements Serializable {
 
 	@Column(name = "student_id")
 	private Long studentId;
-	
+
 	@Column(name = "course_id")
 	private Integer courseId;
-	
+
 	@Column(name = "enroll_at")
 	private LocalDateTime enrollAt;
 
 }
-
-
-
-
-
-
-
-
-
-

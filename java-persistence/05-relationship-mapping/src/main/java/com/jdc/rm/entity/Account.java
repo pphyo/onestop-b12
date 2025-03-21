@@ -23,12 +23,12 @@ import lombok.Setter;
 public class Account {
 
 	@OneToMany(mappedBy = "account", 
-		cascade = {CascadeType.PERSIST},
+		cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
 		orphanRemoval = true
 	)
 	private List<Budget> budgets;
 
-	@OneToOne(mappedBy = "account")
+	@OneToOne(mappedBy = "account", cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
 //	@PrimaryKeyJoinColumn(name = "account_type_id")
 //	@MapsId
 	private AccountType accountType;
