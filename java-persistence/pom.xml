@@ -95,5 +95,6 @@
 		<module>04-id-mapping</module>
 		<module>05-relationship-mapping</module>
 		<module>06-inheritance-mapping</module>
+		<module>07-entity-manager</module>
 	</modules>
 </project>
