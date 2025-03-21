@@ -94,5 +94,6 @@
 		<module>03-collection-mapping</module>
 		<module>04-id-mapping</module>
 		<module>05-relationship-mapping</module>
+		<module>06-inheritance-mapping</module>
 	</modules>
 </project>
