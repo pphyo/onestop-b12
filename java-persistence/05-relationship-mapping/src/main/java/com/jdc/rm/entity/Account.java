@@ -1,14 +1,15 @@
 package com.jdc.rm.entity;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -21,8 +22,10 @@ import lombok.Setter;
 @Table(name = "accounts")
 public class Account {
 
-	@OneToMany
-	@JoinColumn(name = "account_id", nullable = false)
+	@OneToMany(mappedBy = "account", 
+		cascade = {CascadeType.PERSIST},
+		orphanRemoval = true
+	)
 	private List<Budget> budgets;
 
 	@OneToOne(mappedBy = "account")
@@ -39,6 +42,15 @@ public class Account {
 
 	@Column(nullable = false, precision = 10, scale = 2)
 	private BigDecimal amount;
+	
+	public void addBudget(Budget budget) {
+		if(null == budgets) {
+			budgets = new ArrayList<>();
+		}
+		// bridge for bidirectional
+		budgets.add(budget);
+		budget.setAccount(this);
+	}
 
 	// bridge method for bi directional mapping
 	public void addAccountType(AccountType type) {

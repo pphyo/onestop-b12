@@ -11,6 +11,8 @@ import org.junit.jupiter.api.TestMethodOrder;
 
 import com.jdc.rm.entity.Account;
 import com.jdc.rm.entity.AccountType;
+import com.jdc.rm.entity.Budget;
+import com.jdc.rm.entity.Budget.BudgetPeriod;
 import com.jdc.rm.entity.Category;
 import com.jdc.rm.entity.Category.CategoryType;
 import com.jdc.rm.entity.Transaction;
@@ -20,7 +22,24 @@ import com.jdc.rm.entity.Transaction.TransactionType;
 public final class RelationshipMappingTest extends BaseTest {
 	
 	@Test
-	void test() {
+	@Order(2)
+	void test_for_remove_and_orphan_removal() {
+		
+		em.getTransaction().begin();
+		
+		var accountType = em.find(AccountType.class, 1L);
+
+		var account = accountType.getAccount();
+		
+		account.getBudgets().remove(0);
+		
+		em.getTransaction().commit();
+		
+	}
+	
+	@Test
+	@Order(1)
+	void test_for_cascade_persist() {
 		
 		AccountType main = new AccountType();
 		main.setName("Main");
@@ -37,10 +56,30 @@ public final class RelationshipMappingTest extends BaseTest {
 		cashAccount.setAmount(new BigDecimal(200_000));
 		
 		mainAccount.addAccountType(main); // bi directional
+		cashAccount.addAccountType(cash);
+		
+		Budget budget1 = new Budget();
+		budget1.setAmount(new BigDecimal(30000));
+		budget1.setPeriod(BudgetPeriod.Monthly);
+		
+		mainAccount.addBudget(budget1);
+		
+		Budget budget2 = new Budget();
+		budget2.setAmount(new BigDecimal(10000));
+		budget2.setPeriod(BudgetPeriod.Weekly);
+		
+		mainAccount.addBudget(budget2);
+		
+		Budget budget3 = new Budget();
+		budget3.setAmount(new BigDecimal(50000));
+		budget3.setPeriod(BudgetPeriod.Monthly);
+		
+		cashAccount.addBudget(budget3);
 		
 		em.getTransaction().begin();
 		
 		em.persist(main);
+		em.persist(cash);
 		
 		em.getTransaction().commit();
 	}

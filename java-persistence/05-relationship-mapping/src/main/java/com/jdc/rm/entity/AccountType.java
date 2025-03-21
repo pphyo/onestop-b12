@@ -22,7 +22,7 @@ public class AccountType {
 	@Column(nullable = false, unique = true)
 	private String name;
 	
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@OneToOne(cascade = CascadeType.ALL)
 	private Account account;
 
 }
